@@ -15,23 +15,59 @@ Wanderer is an intelligent travel assistant built as a part of the submission fo
 
 *   **Frontend:** React, Vite, Tailwind CSS
 *   **Linting/Formatting:** Oxlint
-*   **AI Framework:** *[Insert the AI SDK/Framework you used, e.g., Vercel AI SDK, OpenAI API]*
+*   **AI Framework:**  OpenAI API, Vercel AI SDK
 
 ## 🤖 Architecture & Agent Design
 
-*[Briefly explain how your AI Agent works here. For example:]*
-*   **User Intent Parsing:** How the agent understands the destination and constraints.
-*   **Tools/Functions:** If your agent calls any mock or real APIs (e.g., weather, maps).
+* **User Intent Parsing:** Utilizes OpenAI models via the Vercel AI SDK to stream conversational responses and extract travel preferences (destination, budget, days).
+* **Tools/Functions:** Dynamically orchestrates live data fetching by connecting the LLM to the Gemini API, AccuWeather API, Drupal API, and RouteStack API to generate accurate itineraries.
 
 ---
 
 ## 🛠️ Local Development (Optional)
 
-If you want to run this project locally for development or grading purposes:
+You can access the website through the live demo. However, if you want to run this project locally for development or grading purposes:
+
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) installed (v18+ recommended) along with `npm`.
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/SaipreethamPolepalli/ai-travel-concierge.git](https://github.com/SaipreethamPolepalli/ai-travel-concierge.git)
-   cd ai-travel-concierge
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/SaipreethamPolepalli/ai-travel-concierge.git
+    cd ai-travel-concierge
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+    Create a `.env` file in the root directory and add your required API keys:
+    ```env
+    VITE_AI_API_KEY=your_openai_or_gemini_api_key_here
+    # Add any other required tool keys (e.g., AccuWeather, RouteStack) if applicable
+    ```
+
+### Running the Application
+
+1.  **Start the local development server:**
+    ```bash
+    npm run dev
+    ```
+    Once started, open your browser and navigate to the local URL provided in your terminal (typically `http://localhost:5173`).
+
+2.  **Lint and format check (Oxlint):**
+    To run code quality checks before making a commit:
+    ```bash
+    npm run lint
+    ```
+
+3.  **Build for production:**
+    To generate a production-ready bundle in the `dist` directory:
+    ```bash
+    npm run build
+    ```
